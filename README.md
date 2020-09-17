@@ -38,29 +38,29 @@ To run the container in the above examples would require the following
 
 if using the locally built image...
 
-```docker run -it \
-    --env="DISPLAY" \
-    --env="QT_X11_NO_MITSHM=1" \
-    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+```
+docker run --rm -it \
+    --gpus all \
+    -e DISPLAY=$DISPLAY \
+    -e QT_X11_NO_MITSHM=1 \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
     --name=julia-displaz \
     julia-displaz:latest
 ```
 
 if using the docker repository image...
-```docker run -it \
-    --env="DISPLAY" \
-    --env="QT_X11_NO_MITSHM=1" \
-    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+```
+docker run --rm -it \
+    --gpus all \
+    -e DISPLAY=$DISPLAY \
+    -e QT_X11_NO_MITSHM=1 \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
     --name=julia-displaz \
     cognitiveearthdocker/julia-displaz:latest
 ```
 
 This should then give a command prompt inside the container that can be used to execute Julia or Displaz.
 
-To execute Displaz, simply type ```displaz```. The result should be for the displaz window to open, it will do so with errors as below.
+To execute Displaz, simply type ```displaz```
 
-
-# Current Issue
-This does not work due to an issue with GLEW?
-"ERROR: Failed to initialize GLEW"
 
